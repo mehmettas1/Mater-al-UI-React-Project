@@ -5,6 +5,7 @@ import Navbar from "./component/navbar/Navbar"
 import Products from './component/products/Products';
 function App() {
   const [products,setProducts]=useState([])
+  const [cart, setCart] = useState([])
   const baseUrl = "https://fakestoreapi.com/products";
   const getProducts=()=>{
     axios
@@ -20,7 +21,7 @@ function App() {
   },[])
   return (
     <div>
-      <Navbar/>
+      <Navbar cart={cart}/>
       <Products products={products}/>
     </div>
   );
