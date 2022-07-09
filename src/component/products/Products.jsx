@@ -3,11 +3,14 @@ import Categories from "../categories/Categories";
 
 
 const Products = ({products}) => {
-  return 
+  return (
   <div>
-    <Categories/>
-    Products
-    </div>;
+       <Categories/>
+      Products
+  </div>
+  )
 };
 
 export default Products;
+
+

@@ -28,6 +28,7 @@ const Categories = () => {
           <FormControlLabel value="female" control={<Radio />} label="All" />
           {category.map((item, i) => (
             <FormControlLabel
+            key={i}
             value={item}
             control={<Radio />}
             label={item} />
@@ -38,3 +39,9 @@ const Categories = () => {
   );
 };
 export default Categories;
+
+
+
+
+
+
