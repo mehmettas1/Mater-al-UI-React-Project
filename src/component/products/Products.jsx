@@ -2,7 +2,7 @@ import React from "react";
 import Categories from "../categories/Categories";
 import { Container,Grid } from "@mui/material";
 import ProductCard from "./ProductCard"
-const Products = ({ products }) => {
+const Products = ({ products , handleAddProducts }) => {
   return (
     <div>
       <Container >

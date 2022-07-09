@@ -19,10 +19,15 @@ function App() {
   useEffect(()=>{
     getProducts();
   },[])
+
+  const handleAddProducts=(product,quantity)=>{
+  const isAdded=cart.some((item)=>item.id===product.id)
+  !isAdded && setCart([...cart,{...product,quantity}]);
+  }
   return (
     <div>
-      <Navbar cart={cart}/>
-      <Products products={products}/>
+      <Navbar totalProduct={cart?.length}/>
+      <Products products={products} handleAddProducts={handleAddProducts}/>
     </div>
   );
 }

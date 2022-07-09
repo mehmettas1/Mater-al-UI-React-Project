@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-export default function ProductCard({product}) {
+export default function ProductCard({product,handleAddProducts}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -28,7 +28,13 @@ export default function ProductCard({product}) {
       <Typography variant="body2" color="text.secondary">
           {product.category}
         </Typography>
-       <IconButton>
+       <IconButton onClick={()=>(handleAddProducts({
+        title : product.title,
+        id:product.id,
+        image:product.image,
+        price:product.price
+
+       }, 1 ))} >
        <AddShoppingCartIcon/>
        </IconButton>
       </CardActions>
