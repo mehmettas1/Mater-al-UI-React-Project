@@ -11,7 +11,7 @@ const Products = ({ products , handleAddProducts }) => {
          {
             products.map((product)=>(
             <Grid item>
-                <ProductCard product={product}/>
+                <ProductCard product={product} handleAddProducts={handleAddProducts} />
             </Grid>
             ))
          }

@@ -8,7 +8,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import ProductItem from "../Products/Product/ProductItem";
+import ProductItem from "../products/ProductCard";
 
 const Cart = ({ cart, handleUpdateCartQty, handleRemove, handleEmptyCart }) => {
   let subTotal = 0;

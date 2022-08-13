@@ -6,8 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
 
-
-const Categories = () => {
+const Categories = ({ getProducts }) => {
   const [category, setCategory] = useState([]);
   const baseUrl = "https://fakestoreapi.com/products/categories";
   const getCategories = () => {
@@ -21,20 +20,24 @@ const Categories = () => {
   }, []);
   return (
     <div>
-      <FormControl sx={{ mt: 10 }}>
+      <FormControl just sx={{ width: "100vw", m: 1 }}>
         <RadioGroup
           row
-          aria-labelledby="demo-row-radio-buttons-group-label"
+          sx={{ justifyContent: "center" }}
           name="row-radio-buttons-group"
+          onChange={(e) =>
+            getProducts(e.target.value && `/category/${e.target.value}`)
+          }
         >
-          <FormControlLabel value="female" control={<Radio />} label="All" />
+          <FormControlLabel value="" control={<Radio />} label="All" />
           {category.map((item, i) => (
             <FormControlLabel
-            key={i}
-            value={item}
-            sx={{ textTransform: "capitalize" }}
-            control={<Radio />}
-            label={item} />
+              key={i}
+              value={item}
+              sx={{ textTransform: "capitalize" }}
+              control={<Radio />}
+              label={item}
+            />
           ))}
         </RadioGroup>
       </FormControl>
@@ -42,9 +45,3 @@ const Categories = () => {
   );
 };
 export default Categories;
-
-
-
-
-
-

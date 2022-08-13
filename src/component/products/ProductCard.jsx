@@ -1,43 +1,110 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-export default function ProductCard({product,handleAddProducts}) {
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import React from "react";
+
+const ProductCard = ({
+  product,
+  handleAddProducts,
+  cart,
+  handleUpdateCartQty,
+  handleRemove,
+}) => {
+  
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       <CardMedia
         component="img"
-        alt="green iguana"
-        height="140"
+        height={300}
         image={product.image}
-        sx={{objectFit:"contain"}}
+        title={product.title}
+        sx={{ objectFit: "contain" }}
       />
-      <CardContent sx={{display:"flex", justifyContent:"space-between"}}>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {product.price +"$"}
-        </Typography>
+      <CardContent sx={{ p: 1, mb: 1 }}>
+        <Box display="flex" justifyContent="space-between" height={70}>
+          <Typography variant="body1" gutterBottom>
+            {product.title}
+          </Typography>
+          <Typography variant="h6" pl={1} color="initial">
+            {product.price + "$"}
+          </Typography>
+        </Box>
       </CardContent>
-      <CardActions sx={{display:"flex", justifyContent:"space-between"}}>
-      <Typography variant="body2" color="text.secondary">
-          {product.category}
-        </Typography>
-       <IconButton onClick={()=>(handleAddProducts({
-        title : product.title,
-        id:product.id,
-        image:product.image,
-        price:product.price
-
-       }, 1 ))} >
-       <AddShoppingCartIcon/>
-       </IconButton>
-      </CardActions>
+      {!cart ? (
+        <CardActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="body2" color="textSecondary">
+            {product.category}
+          </Typography>
+          <IconButton
+            aria-label="Add to Cart"
+            onClick={() =>
+              handleAddProducts(
+                {
+                  id: product.id,
+                  title: product.title,
+                  price: product.price,
+                  image: product.image,
+                },
+                1
+              )
+            }
+          >
+            <AddShoppingCartIcon />
+          </IconButton>
+        </CardActions>
+      ) : (
+        <CardActions
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box display="flex" alignItems="center">
+            <Button
+              type="button"
+              size="small"
+              onClick={() =>
+                handleUpdateCartQty(product.id, product.quantity - 1)
+              }
+            >
+              -
+            </Button>
+            <Typography>{product?.quantity}</Typography>
+            <Button
+              type="button"
+              size="small"
+              onClick={() =>
+                handleUpdateCartQty(product.id, product.quantity + 1)
+              }
+            >
+              +
+            </Button>
+          </Box>
+          <Button
+            variant="contained"
+            type="button"
+            color="error"
+            onClick={() => handleRemove(product.id)}
+          >
+            Remove
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
-}
+};
+
+export default ProductCard;

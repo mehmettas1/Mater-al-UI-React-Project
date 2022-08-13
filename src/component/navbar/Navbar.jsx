@@ -6,9 +6,11 @@ import IconButton from "@mui/material/IconButton";
 import logo from "../../assets/logo.svg";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from '@mui/material/Badge';
+
+
 export default function MenuAppBar({totalProduct}) {
   const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState("");
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
