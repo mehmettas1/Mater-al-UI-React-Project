@@ -5,6 +5,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import axios from "axios";
+
+
 const Categories = () => {
   const [category, setCategory] = useState([]);
   const baseUrl = "https://fakestoreapi.com/products/categories";
@@ -30,6 +32,7 @@ const Categories = () => {
             <FormControlLabel
             key={i}
             value={item}
+            sx={{ textTransform: "capitalize" }}
             control={<Radio />}
             label={item} />
           ))}
