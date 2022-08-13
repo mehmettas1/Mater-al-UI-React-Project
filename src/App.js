@@ -3,7 +3,6 @@ import { useEffect,useState } from 'react';
 import './App.css';
 import Navbar from "./component/navbar/Navbar"
 import Products from './component/products/Products';
-import React from 'react';
 function App() {
   const [products,setProducts]=useState([])
   const [cart, setCart] = useState([])
